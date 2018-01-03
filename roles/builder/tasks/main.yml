@@ -44,6 +44,7 @@
     - squashfs-tools
     - libxslt
     - glibc.i686
+    - libstdc++.i686
     - freeipa-client
 
 - name: copy codefire bashrc to profile.d
@@ -60,6 +61,7 @@
     - /mnt/nfs-fs1-nfshomes_storage
     - /mnt/nfs-fs1-datastore
 
+# TODO: use soft mount
 - name: mount nfshomes
   mount:
     name: /mnt/nfs-fs1-nfshomes_storage
