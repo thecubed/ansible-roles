@@ -1,3 +1,9 @@
+if [ $UID -lt 5000 ]
+then
+       # skip users with low UIDs, since they're not in IPA
+       return
+fi
+
 STORAGE_DIR="/mnt/nfs-fs1-nfshomes_storage"
 DOWNLOADS_DIR="/mnt/datastore/downloads"
 SKIP_FILE="/home/$USER/.skipsymlinks"
