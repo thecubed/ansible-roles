@@ -1,0 +1,69 @@
+---
+### Codefire Buildbox ansible role ###
+
+- name: install development tools
+  dnf:
+    name: "@Development tools"
+    state: present
+
+- name: install build tools and utilities
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - java-1.8.0-openjdk-devel
+    - maven
+    - lzop
+    - lzma-devel
+    - xz-devel
+    - lz4
+    - lynx
+    - libsepol-static
+    - ImageMagick
+    - bison
+    - flex
+    - gettext
+    - gperf
+    - perl-Switch
+    - readline-devel
+    - curl-devel
+    - expat-devel
+    - gettext-devel
+    - openssl-devel
+    - zlib-devel
+    - freeipa-client
+
+- name: copy codefire bashrc to profile.d
+  copy: 
+    src: files/etc/profile.d/codefire_mksymlinks.sh
+    dest: /etc/profile.d/codefire_mksymlinks.sh
+    mode: 0644
+
+- name: make nfs mountpoints
+  file:
+    name: "{{ item }}"
+    state: directory
+  with_items:
+    - /mnt/nfs-fs1-nfshomes_storage
+    - /mnt/nfs-fs1-datastore
+
+- name: mount nfshomes
+  mount:
+    name: /mnt/nfs-fs1-nfshomes_storage
+    src: fs1:/homes
+    fstype: nfs4
+    state: mounted
+
+- name: mount datastore
+  mount:
+    name: /mnt/nfs-fs1-datastore
+    src: fs1:/datastore
+    fstype: nfs4
+    state: mounted
+    
+- name: symlink datastore mountpoint to /mnt/datastore
+  file:
+    name: /mnt/datastore
+    src: /mnt/nfs-fs1-datastore
+    state: link
+

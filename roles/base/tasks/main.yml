@@ -1,0 +1,70 @@
+---
+
+- name: install deps for ansible modules
+  raw: dnf install -y python2-dnf libselinux-python
+
+- name: perform system dnf update
+  dnf:
+    name: "*"
+    state: latest
+
+- name: install utilities
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - libselinux-python
+    - libffi
+    - libffi-devel
+    - net-tools
+    - nmap-ncat
+    - openssl-devel
+    - ncurses-term
+    - strace
+    - curl
+    - gcc
+    - glibc-devel
+    - htop
+    - iperf
+    - iptraf
+    - jq
+    - make
+    - nload
+    - ntp
+    - redhat-lsb-core
+    - sysstat
+    - tmux
+    - traceroute
+    - unzip
+    - wget
+    - xfsprogs
+    - tcpdump
+    - kernel-devel
+    - ipmitool
+    - dmidecode
+    - byobu
+    - vim
+
+- name: copy megacli to /tmp
+  copy: 
+    src: files/tmp/MegaCli-8.07.14-1.noarch.rpm
+    dest: /tmp/MegaCli-8.07.14-1.noarch.rpm
+    force: no
+
+- name: install megacli
+  dnf:
+    name: "/tmp/MegaCli-8.07.14-1.noarch.rpm"
+    state: present
+
+- name: put megacli symlink in /usr/local/bin
+  file:
+    name: /usr/local/bin/megacli
+    src: /opt/MegaRAID/MegaCli/MegaCli64
+    state: link
+
+# Don't use this yet until it's fixed
+# - name: ensuring limits.conf is up to date
+#   copy:
+#     src: etc/security/limits.conf
+#     dest: /etc/security/limits.conf
+#     mode: 0644

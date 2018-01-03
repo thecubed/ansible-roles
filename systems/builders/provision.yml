@@ -1,0 +1,11 @@
+---
+- name: Provision Codefire buildboxes
+  hosts: builders
+  user: tyler
+  become: yes
+  #strategy: debug
+  become_user: root
+  #connection: local
+  roles:
+    #- base
+    - builder
