@@ -31,6 +31,19 @@
     - gettext-devel
     - openssl-devel
     - zlib-devel
+    - ccache
+    - lz4-devel
+    - SDL-devel
+    - SDL
+    - wxGTK3
+    - wxGTK3-devel
+    - libxml2-devel
+    - libxml2
+    - pngcrush
+    - schedtool
+    - squashfs-tools
+    - libxslt
+    - glibc.i686
     - freeipa-client
 
 - name: copy codefire bashrc to profile.d
