@@ -48,10 +48,16 @@
     - freeipa-client
 
 - name: copy codefire bashrc to profile.d
-  copy: 
+  copy:
     src: files/etc/profile.d/codefire_mksymlinks.sh
     dest: /etc/profile.d/codefire_mksymlinks.sh
     mode: 0644
+
+- name: copy repo script to usr
+  copy:
+    src: files/usr/bin/repo
+    dest: /usr/bin/repo
+    mode: 0755
 
 - name: make nfs mountpoints
   file:
@@ -75,10 +81,9 @@
     src: fs1:/datastore
     fstype: nfs4
     state: mounted
-    
+
 - name: symlink datastore mountpoint to /mnt/datastore
   file:
     name: /mnt/datastore
     src: /mnt/nfs-fs1-datastore
     state: link
-
