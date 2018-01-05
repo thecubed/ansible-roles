@@ -46,6 +46,7 @@
     - glibc.i686
     - libstdc++.i686
     - freeipa-client
+    - lsyncd
 
 - name: copy codefire bashrc to profile.d
   copy:
