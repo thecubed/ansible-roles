@@ -25,6 +25,7 @@
     - gcc
     - glibc-devel
     - htop
+    - iotop
     - iperf
     - iptraf
     - jq
@@ -44,6 +45,7 @@
     - dmidecode
     - byobu
     - vim
+    - hdparm
 
 - name: copy megacli to /tmp
   copy: 

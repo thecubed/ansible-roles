@@ -1,6 +1,11 @@
 ---
 ### Codefire Buildbox ansible role ###
 
+# Seems like there's issues with FreeIPA and Selinux... let's just set it to audit for now
+- name: selinux to permissive
+  selinux:
+    state: permissive
+
 - name: install development tools
   dnf:
     name: "@Development tools"
@@ -88,3 +93,5 @@
     name: /mnt/datastore
     src: /mnt/nfs-fs1-datastore
     state: link
+
+# TODO: MOTD rotation
