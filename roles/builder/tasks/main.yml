@@ -53,6 +53,7 @@
     - freeipa-client
     - lsyncd
     - lzip
+    - gcc-c++
 
 - name: copy codefire bashrc to profile.d
   copy:
