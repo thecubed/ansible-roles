@@ -54,6 +54,7 @@
     - lsyncd
     - lzip
     - gcc-c++
+    - redhat-rpm-config
 
 - name: copy codefire bashrc to profile.d
   copy:
