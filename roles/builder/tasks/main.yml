@@ -55,6 +55,7 @@
     - lzip
     - gcc-c++
     - redhat-rpm-config
+    - python2-devel
 
 - name: copy codefire bashrc to profile.d
   copy:
