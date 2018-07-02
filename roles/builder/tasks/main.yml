@@ -58,6 +58,12 @@
     - redhat-rpm-config
     - python2-devel
 
+- name: install pip modules
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - zstandard
+
 - name: copy codefire bashrc to profile.d
   copy:
     src: files/etc/profile.d/codefire_mksymlinks.sh
