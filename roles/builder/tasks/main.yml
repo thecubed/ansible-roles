@@ -57,6 +57,7 @@
     - gcc-c++
     - redhat-rpm-config
     - python2-devel
+    - perl-CPAN
 
 - name: install pip modules
   pip:
