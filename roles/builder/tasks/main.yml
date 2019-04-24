@@ -58,6 +58,8 @@
     - redhat-rpm-config
     - python2-devel
     - perl-CPAN
+    - zlib.i686
+    - zlib-devel.i686
 
 - name: install pip modules
   pip:
